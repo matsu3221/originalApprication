@@ -1,0 +1,18 @@
+＃参考URL
+https://spring.pleiades.io/guides/gs/accessing-data-mysql/
+
+#kubernetes上で構築したmysqlにアクセスするアプリケーションを作成する
+#最終的にはkubernetes上にリリースする必要があるが、
+#デバッグなど、どうすれば良いのだろうか・・・
+
+#kubernetesで動作中のMysqlに接続するため、NodePortのサービスを立ち上げた
+#mysql.yaml参照
+
+#ローカルにMysqlをインストール
+#アクセスするために以下コマンドでローカルのMysqlを立ち上げる
+mysql.server start
+#kubernetsのMysqlにアクセスする
+mysql -h 192.168.11.4 -u root -p -P 30800
+→rootのパスワードは『password』
+
+#gradleの使い方

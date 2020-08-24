@@ -1,0 +1,2 @@
+#Dockerfile build
+docker build -t todoAccessWebApi:latest .

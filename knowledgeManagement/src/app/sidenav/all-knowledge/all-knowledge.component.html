@@ -1,0 +1,24 @@
+<div id="list">
+    <div>
+        <h1>
+            {{type}}
+        </h1>
+        <a routerLink='./create' class="simple_square_btn5">＋NEW</a>
+    </div>
+    <br><br><br>
+    <div>
+        <table class="table">
+            <tr>
+                <th class="id">ID</th><th class="subject">SUBJECT</th><th>TYPE</th><th></th><th></th>
+            </tr>
+            <tr *ngFor="let kl of knowledges" >
+                <td class="id">{{kl.id}}</td>
+                <td class="subject">{{kl.knowledgeSubject}}</td>
+                <td >{{kl.type}}</td>
+                <td><input type="button" value="EDIT" class="cell_button" [routerLink]="['./edit',kl.id]"></td>                
+                <td><input type="button" value="DELETE" class="cell_button" (click)="onClickDelete(kl.id)" href="#"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<router-outlet></router-outlet>

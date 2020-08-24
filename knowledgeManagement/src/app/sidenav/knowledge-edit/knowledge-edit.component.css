@@ -1,0 +1,79 @@
+.editForm{
+	position: relative;
+	margin-top: 10px;
+	margin-left: 10px;
+	height: 850px;
+	font-size: large;
+}
+
+.edit{
+	position: relative;
+	margin-top: 30px;
+	margin-left: 30px;
+	font-size: 20px;
+}
+
+input{
+	position: relative;
+	margin-top: 20px;
+	margin-left: 50px;
+	width: 600px;
+	height: 30px;
+	font-size: 20px;
+}
+
+input.long{
+	height: 300px;
+	margin-left: 10px;
+	overflow-wrap: anywhere
+}
+
+input.long2{
+	height: 300px;
+	overflow-wrap: anywhere
+}
+
+textarea{
+	position: relative;
+	margin-top: 20px;
+	margin-left: 10px;
+	width: 600px;
+	height: 300px;
+	font-size: 20px;
+	font-weight: lighter;
+}
+
+.long2{
+	position: relative;
+	margin-top: 20px;
+	margin-left: 50px;
+	width: 600px;
+	height: 300px;
+	font-size: 20px;
+	font-weight: lighter;
+}
+
+.simple_square_btn5 {
+	display: block;
+	position: relative;
+	width: 160px;
+	height: 50px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+    background: #795548;
+    float: right;
+    margin-right: 10px;
+    font-size: large;
+}
+.simple_square_btn5:hover {
+	 opacity:0.8;
+	 cursor: pointer;
+	 text-decoration: none;
+}
+
+.editBtn{
+	margin-top: 30px;
+	margin-right: 10px;
+}

@@ -1,0 +1,3 @@
+datasource:
+    url:  ${DB_URL:localhost}
+    driverClassName: org.postgresql.Driver

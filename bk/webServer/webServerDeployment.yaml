@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sbdemo-nginx-service
+spec:
+  type: ClusterIP
+  ports:
+   - name: "http-port"
+     protocol: "TCP"
+     port: 80
+     targetPort: 80
+  selector:
+    app: sbdemo-nginx
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sbdemo-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sbdemo-nginx
+  template:
+    metadata:
+      labels:
+        app: sbdemo-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: dayan888/springdemo:nginx
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /css/style.css
+            port: 80
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+        - name: server-conf
+          mountPath: /etc/nginx/conf.d/server.conf
+          subPath: server.conf
+      volumes:
+      - name: nginx-conf
+        configMap: 
+          name: nginx-conf
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+      - name: server-conf
+        configMap: 
+          name: server-conf
+          items:
+            - key: server.conf
+              path: server.conf

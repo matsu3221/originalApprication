@@ -1,0 +1,43 @@
+１．Spring Inisializrを利用してプロジェクトの素体を作る
+   URL：https://start.spring.io/
+　　"DEPENDENCY"は必要な物を選択する
+　　例えば、Mysqlへのアクセスを行うwebAPIを構築するならば、以下を選択する
+　　　①Spring Web
+　　　②Spring Data JPA
+　　　③Mysql Driver
+   Artifact：プロジェクト名
+   Project：Gradle Projectを選ぶこと(現在の環境がGradleなだけ)
+２．Gradleのbuild.gradleを編集する(必要に応じて・・・デフォでいい気がする)
+３．Entityクラスを作成する
+   @Eintityアノテーションをクラスに指定
+   Keyとなる項目の定義の際に@Idをつける
+   自動採番する項目は@GeneratedeValueアノテーションをつける(strategy=GenerationType.AUTO)　←これが何を意味するかは今後の学習
+４．Repositoryクラスを作成する
+   interfaceであること、３で作成したEntityを継承する
+５．Mainクラス(ControllerクラスとServiceクラスを担う）を作成する
+   このクラスでリクエスト、レスポンスの整理、後続への処理を行う
+６．Gradleによるbuildを実行
+   gradle build
+   →Successになれば良い！
+７．Gradle Wapperを導入する→ここポイントだがまだ詳細不明
+　　gradle wrapper --gradle-version 2.13
+８．jarの実行
+　　java -jar build/libs/'jarのファイル名'
+   java -jar build/libs/todoCreate-0.0.1-SNAPSHOT.jar
+
+対象エンティティの更新
+１．RepositoryクラスにfindByIdメソッドを追加する
+
+※データソースを変更する必要がある
+→application.propertiesに以下を追記（DBのポートは今回作成しているMysqlのkubernetes上のポートを30800にしているだけであるため、随時環境により変更する）
+
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:30800/db_example
+spring.datasource.username=springuser
+spring.datasource.password=ThePassword
+
+curl http://localhost:8001/todoAccess/add -d todoName=テスト -d description=テスト -d todoDate=2020/06/21 -d yoken=自己啓発
+curl http://localhost:8080/todoAccess/add -d todoName=テスト -d description=テスト -d todoDate=2020/06/21 -d yoken=自己啓発
+
+#Dockerfileのビルド
+docker build -t springio/gs-spring-boot-docker . 

@@ -1,0 +1,18 @@
+参考URL：https://kubernetes.io/ja/docs/tasks/run-application/run-single-instance-stateful-application/#mysql%e3%82%92%e3%83%87%e3%83%97%e3%83%ad%e3%82%a4%e3%81%99%e3%82%8b
+
+作成したmysql deploymentにアクセスする
+kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -ppassword
+
+mysql -u root -p
+
+#ユーザー一覧を確認する
+select HOST,USER,PASSWORD from mysql.user;
+
+#DB一覧を確認する
+SHOW DATABASES;
+
+#テーブル一覧を確認する
+SHOW TABLES FROM データベース名;
+
+#対象のmysql podにアクセスする
+kubectl exec -it ’pod名’ /bin/bash

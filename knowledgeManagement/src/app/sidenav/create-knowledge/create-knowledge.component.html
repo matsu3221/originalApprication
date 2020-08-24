@@ -1,0 +1,19 @@
+<!--div class="subject">
+    <label>テキスト：<input type="text" placeholder="件名"></label>
+    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+</div-->
+<!--div class="subject">
+</div-->
+<div class="editForm">
+    <label class="edit">件名<input type="text" placeholder="件名を入力してください" [(ngModel)]="knowledge.knowledgeSubject"></label><br>
+    <label class="edit">種別<input type="text" placeholder="種別を入力してください" [(ngModel)]="knowledge.type"></label><br>
+    <label class="edit">日付<input class="date" type="text" placeholder="日付を入力してください" [(ngModel)]="knowledge.createDate"></label><input class="today" type="button" value="TODAY" (click)="onClickToday()"><br>
+    <label class="edit">何をした<textarea class="long" placeholder="実施したことを入力してください" [(ngModel)]="knowledge.whatKnowledge"></textarea></label><br>
+    <label class="edit">結果<textarea class="long2" placeholder="実施したこと結果を入力してください" [(ngModel)]="knowledge.howKnowledge"></textarea></label><br>
+    <label class="edit">URL <input type="text" placeholder="URLを結果を入力してください" [(ngModel)]="knowledge.referenceUrl"></label><br>
+</div>
+<div class="editBtn">
+    <input type="button" (click)="onClickSaved()" [routerLink]="['/root/all']"  class="simple_square_btn5" value="SAVE">
+    <input type="button" [routerLink]="['/root/all']" class="simple_square_btn5" value="BACK">
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,13 @@
+create table test (
+    aaa char(5) not null,
+    bbb varchar(10) not null,
+    primary key(aaa)
+);
+
+insert into test values(
+ '00001','あああ'
+);
+
+update test set
+ bbb = 'あああ'
+where aaa = '00001';

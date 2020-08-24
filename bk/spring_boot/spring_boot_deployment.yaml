@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellojavakubernetes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: hellojavakubernetes
+  template:
+    metadata:
+      labels:
+        app: hellojavakubernetes
+        tier: backend
+    spec:
+      containers:
+      - name: hellojavakubernetes
+        image: springio/gs-spring-boot-docker
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 8080

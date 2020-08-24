@@ -1,0 +1,129 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqlha
+spec:
+  type: NodePort
+  ports:
+  - name: mysqla
+    port: 3306
+  selector:
+    app: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql_todo:latest
+        # command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+        # args:
+        # - --character-set-server=utf8mb4
+        # - --collation-server=utf8mb4_unicode_ci
+        name: mysql
+        #ローカルイメージを利用するためのパラメータ
+        imagePullPolicy: IfNotPresent
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: mysql-conf
+          mountPath: /etc/mysql/conf.d/my.cnf
+          subPath: my.cnf
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+      - name: mysql-conf
+        configMap: 
+          name: mysql-conf
+          items:
+            - key: my.cnf
+              path: my.cnf
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: mysql
+# spec:
+#   ports:
+#   - port: 3306
+#   selector:
+#     app: mysql
+#   clusterIP: None
+# ---
+# apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+# kind: Deployment
+# metadata:
+#   name: mysql
+# spec:
+#   selector:
+#     matchLabels:
+#       app: mysql
+#   strategy:
+#     type: Recreate
+#   template:
+#     metadata:
+#       labels:
+#         app: mysql
+#     spec:
+#       containers:
+#       - image: mysql_todo:latest
+        #ローカルイメージを利用するためのパラメータ
+        # imagePullPolicy: Never
+#         name: mysql
+#         env:
+#           # Use secret in real usage
+#         - name: MYSQL_ROOT_PASSWORD
+#           value: password
+#         - name: MYSQL_USER
+#           value: todo
+#         - name: MYSQL_USER_PASSWORD
+#           value: password
+#         ports:
+#         - containerPort: 3306
+#           name: mysql
+#         volumeMounts:
+#         - name: mysql-persistent-storage
+#           mountPath: /var/lib/mysql
+#         # - name: mysql-conf
+#         #   mountPath: /etc/mysql/conf.d/my.cnf
+#         #   subPath: my.cnf
+#       volumes:
+#       - name: mysql-persistent-storage
+#         persistentVolumeClaim:
+#           claimName: mysql-pv-claim
+#     #   - name: mysql-conf
+#     #     configMap: 
+#     #       name: mysql-conf
+#     #       items:
+#     #         - key: my.cnf
+#     #           path: my.cnf
