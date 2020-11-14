@@ -8,14 +8,36 @@
 
 import UIKit
 import CoreData
+import SideMenu
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+  var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    let viewController = ViewController()
+    let navigationController = UINavigationController(rootViewController: viewController)
+          window = UIWindow(frame: UIScreen.main.bounds)
+          window?.backgroundColor = UIColor.white
+          window?.rootViewController = navigationController
+          window?.makeKeyAndVisible()
+
+          // さきほど作ったメニュー用のMenuViewControllerをSideMenuにセットする
+          let menuViewController = MenuViewController()
+          let menuNavigationController = SideMenuNavigationController(rootViewController: menuViewController)
+          SideMenuManager.default.leftMenuNavigationController = menuNavigationController
+          SideMenuManager.default.addPanGestureToPresent(toView: navigationController.navigationBar)
+          SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: navigationController.view)
+
+          // Readmeに書かれているオプションもここで指定できる
+//          leftMenuNavigationController.statusBarEndAlpha = 0
+//          leftMenuNavigationController.menuWidth = 300
+//          leftMenuNavigationController.enableSwipeToDismissGesture = false
+ 
+    let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
+    print("\(path)")
+    
     return true
   }
 

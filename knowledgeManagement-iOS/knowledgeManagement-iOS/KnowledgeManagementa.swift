@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class KnowledgeManagement: UITableViewController,UITableViewDelegate,UITableViewDataSource {
+class KnowledgeManagementa: UITableViewController,UITableViewDelegate,UITableViewDataSource {
   
 //  @IBOutlet weak var KnowledgeSubject: UILabel!
 //  @IBOutlet weak var KnowledgeType: UILabel!

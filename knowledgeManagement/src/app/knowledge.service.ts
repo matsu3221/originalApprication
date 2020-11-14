@@ -17,11 +17,11 @@ export class KnowledgeService {
 
   knowledgeR:knowledge = new knowledge();
   // private createKnowledge:createKnowledge;
-  private knowledgeAllUrl = 'http://localhost:32154/knowledgeAccess/all';
+  private knowledgeAllUrl = 'http://localhost:31081/knowledgeAccess/all';
   private knowledgeAllUrl_local = 'http://localhost:8080/knowledgeAccess/all';
-  private knowledgeAddUrl = "http://localhost:32154/knowledgeAccess/add?knowledgeSubject={knowledgeSubject}&createDate={createDate}&whatKnowledge={whatKnowledge}&howKnowledge={howKnowledge}&referenceUrl={referenceUrl}&type={type}";
+  private knowledgeAddUrl = "http://localhost:31081/knowledgeAccess/add?knowledgeSubject={knowledgeSubject}&createDate={createDate}&whatKnowledge={whatKnowledge}&howKnowledge={howKnowledge}&referenceUrl={referenceUrl}&type={type}";
   private knowledgeAddUrl_local = "http://localhost:8080/knowledgeAccess/add?knowledgeSubject={knowledgeSubject}&createDate={createDate}&whatKnowledge={whatKnowledge}&howKnowledge={howKnowledge}&referenceUrl={referenceUrl}&type={type}";
-  private knowledgeEditUrl = "http://localhost:32154/knowledgeAccess/edit?id={id}&knowledgeSubject={knowledgeSubject}&createDate={createDate}&whatKnowledge={whatKnowledge}&howKnowledge={howKnowledge}&referenceUrl={referenceUrl}&type={type}";
+  private knowledgeEditUrl = "http://localhost:31081/knowledgeAccess/edit?id={id}&knowledgeSubject={knowledgeSubject}&createDate={createDate}&whatKnowledge={whatKnowledge}&howKnowledge={howKnowledge}&referenceUrl={referenceUrl}&type={type}";
   private knowledgeEditUrl_local = "http://localhost:8080/knowledgeAccess/edit?id={id}&knowledgeSubject={knowledgeSubject}&createDate={createDate}&whatKnowledge={whatKnowledge}&howKnowledge={howKnowledge}&referenceUrl={referenceUrl}&type={type}";
   private knowledgeDeleteUrl_local = "http://localhost:8080/knowledgeAccess/delete?id={id}";
 

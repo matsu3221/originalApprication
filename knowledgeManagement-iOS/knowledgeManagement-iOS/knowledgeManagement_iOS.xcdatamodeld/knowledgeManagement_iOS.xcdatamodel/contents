@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Knowledge" representedClassName="Knowledge" syncable="YES">
+        <attribute name="create_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="how_knowledge" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="knowledge_subject" optional="YES" attributeType="String"/>
+        <attribute name="reference_url" optional="YES" attributeType="URI"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="what_knowledge" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Knowledge_local" representedClassName="Knowledge_local" syncable="YES">
+        <attribute name="create_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="how_knowledge" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="knowledge_subject" optional="YES" attributeType="String"/>
+        <attribute name="reference_url" optional="YES" attributeType="URI"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="what_knowledge" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Local_Knowledge" representedClassName="Local_Knowledge" syncable="YES">
+        <attribute name="create_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="how_knowledge" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="knowledge_subject" optional="YES" attributeType="String"/>
+        <attribute name="reference_url" optional="YES" attributeType="URI"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="what_knowledge" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Knowledge" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Knowledge_local" positionX="-54" positionY="45" width="128" height="28"/>
+        <element name="Local_Knowledge" positionX="-36" positionY="81" width="128" height="148"/>
+    </elements>
 </model>
